@@ -12,10 +12,10 @@ using QuickApi.Data;
 namespace QuickApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250818151305_AddTypeAndQuantity")]
-    partial class AddTypeAndQuantity
+    [Migration("20250819133325_AddUsers")]
+    partial class AddUsers
     {
-        
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
