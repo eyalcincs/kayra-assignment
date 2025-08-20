@@ -1,13 +1,15 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata; 
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace QuickApi.Migrations
 {
-    public partial class AddUsers : Migration
+    
+    public partial class CreateUsersTable : Migration
     {
+       
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -33,6 +35,7 @@ namespace QuickApi.Migrations
                 unique: true);
         }
 
+        
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
