@@ -15,7 +15,7 @@ namespace QuickApi.Migrations
     [Migration("20250818151305_AddTypeAndQuantity")]
     partial class AddTypeAndQuantity
     {
-        /// <inheritdoc />
+        
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

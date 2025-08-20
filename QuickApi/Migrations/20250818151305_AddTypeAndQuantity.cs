@@ -4,10 +4,10 @@
 
 namespace QuickApi.Migrations
 {
-    /// <inheritdoc />
+    
     public partial class AddTypeAndQuantity : Migration
     {
-        /// <inheritdoc />
+        
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
@@ -36,7 +36,7 @@ namespace QuickApi.Migrations
                 sql: "\"Quantity\" >= 0");
         }
 
-        /// <inheritdoc />
+       
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropCheckConstraint(
