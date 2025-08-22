@@ -132,9 +132,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
 }
-
 app.UseHttpsRedirection();
+
 
 app.UseCors(p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
@@ -142,13 +143,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Endpoint Grupları
-//   Products (CRUD + listeleme)
-//     - Listeleme Redis cache ile hızlandırıldı.
-//     - Create/Update/Delete sonrası liste cache'i prefix ile invalidation yapıyorum.
-//
-//   Auth (Register/Login)
-//     - Register: kullanıcıyı e-posta ile kaydediyorum (hash'li şifre).
-//     - Login: doğru şifre ile JWT üretiyorum.
+
 //   PRODUCTS
 
 var products = app.MapGroup("/api/products").WithTags("Products");
@@ -251,5 +246,16 @@ auth.MapPost("/login", async (LoginRequest req, AppDbContext db, IConfiguration 
 });
 
 app.MapGet("/", () => Results.Redirect("/swagger"));
+
+try
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
+catch (Exception ex)
+{
+    Console.Error.WriteLine($"Migration apply error: {ex}");
+}
 
 app.Run();
